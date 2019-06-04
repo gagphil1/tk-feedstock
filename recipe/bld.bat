@@ -15,7 +15,9 @@ if "%ARCH%"=="32" (
     call "%VS140COMNTOOLS%..\..\VC\vcvarsall.bat" x64 10.0.15063.0
   )
 )
+set path=%path%;"C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64"
 
+set MACHINE="AMD64"
 pushd tcl%PKG_VERSION%\win
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% release
 nmake -f makefile.vc INSTALLDIR=%LIBRARY_PREFIX% MACHINE=%MACHINE% install
@@ -25,7 +27,7 @@ popd
 REM Required for having tmschema.h accessible.  Newer VS versions do not include this.
 REM If you don't have this path, you are missing the Windows 7 SDK.  Please install this.
 REM   NOTE: Later SDKs remove tmschema.h.  It really is necessary to use the Win 7 SDK.
-set INCLUDE=%INCLUDE%;c:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include
+rem set INCLUDE=%INCLUDE%;c:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include
 
 :: Tk build
 
