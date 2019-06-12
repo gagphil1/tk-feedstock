@@ -12,9 +12,6 @@ source:
   - url: https://downloads.sourceforge.net/tcl/tk{{ version }}-src.tar.gz
     folder: tk{{ version }}
     sha256: 49e7bca08dde95195a27f594f7c850b088be357a7c7096e44e1158c7a5fd7b33
-    patches:
-      # https://trac.macports.org/ticket/55649
-      - patch-macosx-tkMacOSXXStubs.c.diff  # [osx]
 
 build:
   number: 1002
@@ -25,7 +22,7 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}
+    - {{ compiler('c') }}                # [linux]
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
     - {{ cdt('libx11-devel') }}          # [linux]
     - {{ cdt('libxcb') }}                # [linux]
